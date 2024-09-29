@@ -1,0 +1,16 @@
+.todo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: inherit;
+	gap: 15px;
+	&__title {
+		max-width: 130px;
+	}
+}
+.todo__notEditTitle {
+	width: 100%;
+	white-space: nowrap; /* Отменяем перенос текста */
+	overflow: hidden; /* Обрезаем содержимое */
+	text-overflow: ellipsis;
+}

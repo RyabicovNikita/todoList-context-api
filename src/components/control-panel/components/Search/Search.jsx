@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ControlPanelContext } from '../../../../utils/context';
 
-export const Search = ({ setUserSearch }) => {
+export const Search = () => {
 	const [value, setValue] = useState('');
+	const { setUserSearch } = useContext(ControlPanelContext);
 
 	const onSubmit = (event) => {
 		event.preventDefault();

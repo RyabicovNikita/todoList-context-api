@@ -1,14 +1,19 @@
 import { Button } from '../Button/Button';
+import { EditInput } from './components';
+import { CompletedCheckbox } from './components/CompletedCheckbox/CompletedCheckbox';
+import styles from './todo.module.scss';
 
-export const Todo = ({ title, completed, isEditing, onEdit, onSave, onRemove, onTitleChange, onCompletedChange }) => {
+export const Todo = ({ title, isEditing, onEdit, onSave, onRemove, onTitleChange, completed, onCompletedChange }) => {
 	return (
-		<div>
-			<input type="checkbox" checked={completed} onChange={({ target }) => onCompletedChange(target.checked)} />
-			<div>
+		<div className={styles.todo}>
+			<CompletedCheckbox completed={completed} onCompletedChange={onCompletedChange} />
+			<div className={styles.todo__title}>
 				{isEditing ? (
-					<input type="text" value={title} onChange={({ target }) => onTitleChange(target.value)} />
+					<EditInput title={title} onTitleChange={onTitleChange} />
 				) : (
-					<button onClick={onEdit}>{title}</button>
+					<p className={styles['todo__notEditTitle']} onClick={onEdit}>
+						{title}
+					</p>
 				)}
 			</div>
 			{isEditing ? <Button onClick={onSave}>Edit</Button> : <Button onClick={onRemove}>Remove</Button>}

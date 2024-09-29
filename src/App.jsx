@@ -5,6 +5,7 @@ import { ControlPanel, Todo } from './components';
 import { createTodo, deleteTodo, getTodos, updateTodo } from './api';
 import { addTodoInTodos, getTodoByID, removeTodo, setTodoInTodos } from './utils';
 import { NEW_TODO_ID } from './constants';
+import { ControlPanelContext, TodoContext } from './utils/context';
 
 const App = () => {
 	const [todos, setTodos] = useState([]);
@@ -51,13 +52,10 @@ const App = () => {
 
 	return (
 		<div className="app">
-			<ControlPanel
-				onTodoAdd={onTodoAdd}
-				setUserSearch={setUserSearch}
-				isSorting={isSorting}
-				setIsSorting={setIsSorting}
-			/>
-			<div>
+			<ControlPanelContext.Provider value={{ onTodoAdd, setUserSearch, isSorting, setIsSorting }}>
+				<ControlPanel />
+			</ControlPanelContext.Provider>
+			<div className="todos-container">
 				{todos.map(({ id, title, completed, isEditing = false }) => (
 					<Todo
 						key={id}

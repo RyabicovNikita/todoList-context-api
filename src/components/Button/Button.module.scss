@@ -1,0 +1,15 @@
+.button-container {
+	width: 250px;
+	&__button {
+		cursor: pointer;
+		box-sizing: border-box;
+		width: 100%;
+		background-color: var(--main-color);
+	}
+	&__button:hover:not(:disabled) {
+		background-color: black;
+		color: var(--main-color);
+		transition: 0.2s;
+		box-shadow: 0px 0px 5px white;
+	}
+}
